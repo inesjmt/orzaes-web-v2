@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <title>Política de Cookies | Orzaes Bar Restaurante</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<style>
+.logo{
+    color:white;
+    font-size:2rem;
+    font-weight:700;
+    letter-spacing:2px;
+}
+  body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+    color:#333;
+  }
+
+  /* Icono volver arriba */
+  #fancy_icon-40-6 {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 3rem;
+    color: #2E4E34;
+    cursor: pointer;
+    display: none; /* oculto hasta hacer scroll */
+    z-index: 1000;
+  }
+
+  #fancy_icon-40-6:hover {
+    color: #3d6846;
+  }
+
+  /* Botón home – PC */
+  .btn-home{
+    position:absolute;
+    right:140px;
+    background:#2E4E34;
+    color:white;
+    padding:10px 16px;
+    border-radius:6px;
+    text-decoration:none;
+    font-size:1.1em;
+  }
+
+  header{
+    background:#2E4E34;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  header img{
+    max-width:180px;
+  }
+
+  .legal-container{
+    max-width:900px;
+    background:#fff;
+    margin:40px auto;
+    padding:40px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.08);
+  }
+
+  .legal-container h1{
+    color:#2E4E34;
+    margin-bottom:20px;
+  }
+
+  .legal-container h2{
+    margin-top:30px;
+    color:#444;
+  }
+
+  .legal-container p{
+    line-height:1.7;
+    margin:12px 0;
+  }
+
+  footer{
+    text-align:center;
+    padding:20px;
+    background:#2E4E34;
+    color:white;
+    font-size:0.9em;
+  }
+
+  @media (max-width: 768px){
+
+    header{
+      flex-direction:column;
+      gap:15px;
+    }
+
+    .btn-home{
+      position:static;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">ORZAES</div>
+  <a href="index.html" class="btn-home">
+  <i class="fas fa-home"></i>
+  </a>
+</header>
+<main class="legal-container">
+
+<h1>Aviso Legal</h1>
+
+<p>En cumplimiento de lo dispuesto en la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los siguientes datos:</p>
+
+<h2>Titular del sitio web</h2>
+<p>
+  Titular: Orzaes Bar Restaurante<br>
+  Dirección: Paseo Virgen de Linarejos, 32, 23700 Linares, Jaén<br>
+  Teléfono: 656 962 955
+</p>
+
+<h2>Objeto</h2>
+<p>El presente sitio web tiene carácter meramente informativo y tiene como finalidad ofrecer información sobre los productos, servicios y carta del restaurante.</p>
+
+<p>A través de esta web no se realizan reservas, pedidos online ni pagos electrónicos.</p>
+
+<h2>Propiedad intelectual e industrial</h2>
+<p>Todos los contenidos del sitio web (textos, imágenes, logotipos, diseño, código fuente) son titularidad del restaurante o de terceros autorizados, quedando prohibida su reproducción, distribución o modificación sin autorización expresa.</p>
+
+<h2>Responsabilidad</h2>
+<p>El titular no se hace responsable del mal uso que se realice de los contenidos del sitio web ni de los daños derivados del acceso o uso de la información contenida en él.</p>
+
+<h2>Enlaces a terceros</h2>
+<p>Este sitio web puede contener enlaces a páginas externas (como redes sociales o servicios de mapas). El titular no se responsabiliza del contenido ni de las políticas de privacidad de dichos sitios.</p>
+
+<h2>Legislación aplicable</h2>
+<p>La relación entre el titular y el usuario se regirá por la normativa española vigente. Para la resolución de cualquier controversia, las partes se someterán a los juzgados y tribunales que correspondan conforme a la ley.</p>
+
+</main>
+
+<footer>
+     © ORZAES Bar Restaurante
+
+</footer>
+
+  <!-- Icono volver arriba -->
+  <div id="fancy_icon-40-6" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <i class="fas fa-arrow-circle-up"></i>
+  </div>
+    
+    <script>
+    const btnUp = document.getElementById('fancy_icon-40-6');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        btnUp.style.display = 'block';
+      } else {
+        btnUp.style.display = 'none';
+      }
+    });
+	 </script>
+</body>
+</html>
+

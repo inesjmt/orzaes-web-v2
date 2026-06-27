@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Orzaes | Tapas y Raciones en Linares</title>
+
+<!-- Tipografías -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --verde:#264E34;
+    --negro:#1B1B1B;
+    --beige:#D8C8B5;
+    --blanco:#F8F6F2;
+    --dorado:#B28B58;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--blanco);
+    color:var(--negro);
+    line-height:1.7;
+}
+
+h1,h2,h3{
+    font-family:'Playfair Display',serif;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* NAVBAR */
+
+header{
+    position:fixed;
+    width:100%;
+    background:rgba(27,27,27,.95);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+}
+
+.logo{
+    color:white;
+    font-size:2rem;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.menu{
+    display:flex;
+    gap:35px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.menu a:hover{
+    color:var(--dorado);
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url("imagenes/principal.png") center/cover;
+    display:flex;
+    align-items:center;
+    color:white;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    margin-bottom:40px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:15px 30px;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--verde);
+    color:white;
+}
+
+.btn-primary:hover{
+    background:var(--dorado);
+}
+
+.btn-secondary{
+    border:2px solid white;
+    color:white;
+}
+
+.btn-secondary:hover{
+    background:white;
+    color:black;
+}
+
+/* SECCIONES */
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    color:var(--verde);
+}
+
+.section-title p{
+    color:#666;
+}
+
+/* NUESTRA ESENCIA */
+
+.esencia{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.esencia img{
+    width:100%;
+    border-radius:15px;
+}
+
+.esencia-text h3{
+    font-size:2rem;
+    margin-bottom:25px;
+}
+
+/* ESPECIALIDADES */
+
+.grid-especialidades{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.card h3{
+    color:var(--verde);
+    margin-bottom:15px;
+}
+
+/* OPINIONES */
+
+.opiniones{
+    background:var(--verde);
+    color:white;
+}
+
+.testimonios{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.testimonio{
+    background:rgba(255,255,255,.1);
+    padding:30px;
+    border-radius:15px;
+}
+
+.estrellas{
+    color:gold;
+    margin-bottom:15px;
+}
+
+/* RESERVAS */
+
+.reservas{
+    text-align:center;
+}
+
+.info{
+    margin:40px 0;
+}
+
+.info p{
+    margin-bottom:10px;
+    font-size:1.1rem;
+}
+
+/* FOOTER */
+
+footer{
+    background:var(--negro);
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer span{
+    color:var(--dorado);
+}
+.footer-legal{
+  background:#2E4E34;
+  color:white;
+  padding:20px 10px;
+  text-align:center;
+  display:block;
+}
+
+.footer-social{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-bottom:10px;
+}
+
+.footer-social img{
+  width:40px;
+}
+
+.footer-copy{
+  margin:6px 0 4px;
+  font-size:0.95em;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  font-size:0.85em;
+}
+
+.footer-links a{
+  color:white;
+  text-decoration:underline;
+}
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .esencia{
+        grid-template-columns:1fr;
+    }
+
+    .menu{
+        display:none;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">ORZAES</div>
+
+<div class="menu">
+<a href="#inicio">Inicio</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#especialidades">Carta</a>
+<a href="#menus">Menús</a>
+<a href="#opiniones">Opiniones</a>
+<a href="#reservas">Reservas</a>
+</div>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+<div class="container">
+
+<div class="hero-content">
+
+<h1>El sabor de compartir en Linares</h1>
+
+<p>
+Tapas, raciones y buenos momentos para disfrutar en pareja,
+en familia o con amigos.
+</p>
+
+<div class="buttons">
+
+<a href="carta.html" class="btn btn-primary">
+Ver Carta
+</a>
+
+<a href="tel:656962955" class="btn btn-secondary">
+Reservar Mesa
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- NUESTRA ESENCIA -->
+
+<section id="nosotros">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Mucho más que un bar de tapas</h2>
+<p>Tradición, sabor y momentos que merecen compartirse.</p>
+</div>
+
+<div class="esencia">
+
+<img src="imagenes/local.png">
+
+<div class="esencia-text">
+
+<h3>La esencia de Orzaes</h3>
+
+<p>
+En Orzaes creemos que la mejor comida es la que se comparte.
+Por eso hemos creado un espacio donde tradición, buen producto
+y cercanía se unen para que cada visita se convierta en un momento especial.
+</p>
+
+<br>
+
+<p>
+Desde una cena en pareja hasta una comida familiar o una reunión
+con amigos, aquí siempre hay sitio para disfrutar alrededor de la mesa.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ESPECIALIDADES -->
+
+<section id="especialidades">
+
+<div class="container">
+
+<div class="section-title">
+<h2>Nuestras especialidades</h2>
+<p>Sabores de siempre elaborados con pasión y productos de calidad.</p>
+</div>
+
+<div class="grid-especialidades">
+
+<div class="card">
+
+<img src="imagenes/tapas.png">
+
+<div class="card-content">
+<h3>Tapas tradicionales</h3>
+<p>Los sabores más auténticos para disfrutar en buena compañía.</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="imagenes/raciones.png">
+
+<div class="card-content">
+<h3>Raciones para compartir</h3>
+<p>Platos generosos pensados para reunir a todos alrededor de la mesa.</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="imagenes/menu.png">
+
+<div class="card-content">
+<h3>Menús para grupos</h3>
+<p>Disfruta de tus eventos con nuestra variedad de menús para grupos.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- OPINIONES -->
+
+<section class="opiniones" id="opiniones">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2 style="color:white">
+Lo que dicen nuestros clientes
+</h2>
+
+</div>
+
+<div class="testimonios">
+
+<div class="testimonio">
+
+<div class="estrellas">
+★★★★★
+</div>
+
+<p>
+"Tapas increíbles y un ambiente fantástico.
+Un sitio para repetir una y otra vez."
+</p>
+
+</div>
+
+<div class="testimonio">
+
+<div class="estrellas">
+★★★★★
+</div>
+
+<p>
+"Perfecto para venir con la familia.
+Los niños disfrutan y el trato es excelente."
+</p>
+
+</div>
+
+<div class="testimonio">
+
+<div class="estrellas">
+★★★★★
+</div>
+
+<p>
+"La mejor opción para quedar con amigos
+y compartir buenas raciones."
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- RESERVAS -->
+
+<section class="reservas" id="reservas">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Te esperamos en Orzaes</h2>
+
+<p>
+Porque las mejores historias siempre empiezan alrededor de una mesa.
+</p>
+
+</div>
+
+<div class="info">
+
+<p>📍 P.º Virgen de Linarejos, 32  Linares</p>
+
+<p>📞 656 962 955</p>
+
+<p>🕒 Martes a Domingo: 08:00 a 24:00</p>
+
+</div>
+
+<a class="btn btn-primary" href="tel:656962955">
+Reserva tu mesa
+</a>
+
+</div>
+
+</section>
+
+<footer>
+<div class="footer-social">
+    <a href="https://www.instagram.com/barrestauranteorzaes/" target="_blank">
+      <img src="iconos/insta.png" alt="Instagram">
+    </a>
+    <a href="https://www.facebook.com/share/1Bu1LuWite/?mibextid=wwXIfr" target="_blank">
+      <img src="iconos/facebook.png" alt="Facebook">
+    </a>
+
+	<a href="https://wa.me/34656962955?text=Hola!%20Me%20gustaría%20reservar%20una%20mesa%20en%20Orzaes" target="_blank">
+      <img src="iconos/whats.png" alt="Whatsapp">
+    </a>
+	 <a href="https://www.google.com/maps/search/?api=1&query=Orzaes+Linares+Paseo+Virgen+de+Linarejos+32" target="_blank">
+      <img src="iconos/google-maps.png" alt="Maps">
+    </a>
+  </div>
+
+  <p class="footer-copy">
+    © ORZAES Bar Restaurante
+  </p>
+<p>
+  <span>El placer de compartir</span>
+</p>
+
+
+  <div class="footer-links">
+    <a href="aviso-legal.html">Aviso legal</a>
+    <span>|</span>
+    <a href="politica-cookies.html">Política de cookies</a>
+  </div>
+</footer>
+ 
+
+  <script>
+
+const menus = [
+  "1.png",
+  "2.png",
+  "menu3.png"
+  
+];
+
+let currentIndex = 0;
+
+const preview = document.getElementById("menuPreview");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+// 🔹 Abrir
+preview.addEventListener("click", () => {
+  currentIndex = 0;
+  lightboxImg.src = menus[currentIndex];
+
+  lightbox.style.display = "flex";
+
+  document.body.style.overflow = "hidden"; // ✅ aquí
+
+  setTimeout(() => {
+    lightbox.classList.add("show");
+  }, 10);
+});
+
+// 🔹 Cerrar
+function cerrarLightbox() {
+  lightbox.classList.remove("show");
+
+  document.body.style.overflow = "auto"; // ✅ aquí
+
+  setTimeout(() => {
+    lightbox.style.display = "none";
+  }, 300);
+}
+
+// Botón X
+document.querySelector(".close").onclick = cerrarLightbox;
+
+// Click fuera
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    cerrarLightbox();
+  }
+});
+
+
+
+// 🔹 Navegación
+function showNext() {
+  currentIndex = (currentIndex + 1) % menus.length;
+  lightboxImg.src = menus[currentIndex];
+}
+
+function showPrev() {
+  currentIndex = (currentIndex - 1 + menus.length) % menus.length;
+  lightboxImg.src = menus[currentIndex];
+}
+
+document.querySelector(".next").onclick = showNext;
+document.querySelector(".prev").onclick = showPrev;
+
+// 🔹 Swipe móvil
+let startX = 0;
+
+lightbox.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+lightbox.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) {
+    showNext(); // swipe izquierda
+  } else if (endX - startX > 50) {
+    showPrev(); // swipe derecha
+  }
+});
+
+// 🔹 Cerrar al hacer click fuera de la imagen
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    cerrarLightbox();
+  }
+});
+</script>
+
+</body>
+</html>
