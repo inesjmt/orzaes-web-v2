@@ -196,6 +196,7 @@ section{
     overflow:hidden;
     box-shadow:0 10px 30px rgba(0,0,0,.08);
     transition:.3s;
+    cursor:pointer;
 }
 
 .card:hover{
@@ -215,6 +216,103 @@ section{
 .card h3{
     color:var(--verde);
     margin-bottom:15px;
+}
+
+/* LIGHTBOX - GALERÍA DE MENÚS */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.show {
+    opacity: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#lightbox-img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* Botones de navegación */
+.lightbox-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--dorado);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2001;
+}
+
+.lightbox-btn:hover {
+    background: var(--verde);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+/* Botón cerrar */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2001;
+}
+
+.close:hover {
+    color: var(--dorado);
+    transform: scale(1.2);
+}
+
+/* Contador de imágenes */
+.image-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
 }
 
 /* OPINIONES */
@@ -319,6 +417,26 @@ footer span{
 
     .buttons{
         flex-direction:column;
+    }
+
+    .lightbox-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+
+    .close {
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
     }
 
 }
@@ -459,9 +577,9 @@ con amigos, aquí siempre hay sitio para disfrutar alrededor de la mesa.
 
 </div>
 
-<div class="card">
+<div class="card" id="menuCard">
 
-<img src="imagenes/menu.png">
+<img src="imagenes/menu.png" id="menuPreview">
 
 <div class="card-content">
 <h3>Menús para grupos</h3>
@@ -475,6 +593,19 @@ con amigos, aquí siempre hay sitio para disfrutar alrededor de la mesa.
 </div>
 
 </section>
+
+<!-- LIGHTBOX PARA LA GALERÍA DE MENÚS -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <span class="close">&times;</span>
+        <button class="lightbox-btn prev">❮</button>
+        <img id="lightbox-img" src="" alt="Menú">
+        <button class="lightbox-btn next">❯</button>
+        <div class="image-counter">
+            <span id="imageNumber">1</span> / <span id="totalImages">3</span>
+        </div>
+    </div>
+</div>
 
 <!-- OPINIONES -->
 
@@ -607,36 +738,45 @@ Reserva tu mesa
   <script>
 
 const menus = [
-  "1.png",
-  "2.png",
-  "menu3.png"
-  
+  "menus/1.png",
+  "menus/2.png",
+  "menus/3.png"
 ];
 
 let currentIndex = 0;
 
-const preview = document.getElementById("menuPreview");
+const menuCard = document.getElementById("menuCard");
+const menuPreview = document.getElementById("menuPreview");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
-// 🔹 Abrir
-preview.addEventListener("click", () => {
+const imageNumber = document.getElementById("imageNumber");
+const totalImages = document.getElementById("totalImages");
+
+totalImages.textContent = menus.length;
+
+// 🔹 Abrir galería al hacer click en la tarjeta
+menuCard.addEventListener("click", () => {
   currentIndex = 0;
-  lightboxImg.src = menus[currentIndex];
-
+  updateImage();
+  
   lightbox.style.display = "flex";
-
-  document.body.style.overflow = "hidden"; // ✅ aquí
+  document.body.style.overflow = "hidden";
 
   setTimeout(() => {
     lightbox.classList.add("show");
   }, 10);
 });
 
-// 🔹 Cerrar
+// 🔹 Actualizar imagen y contador
+function updateImage() {
+  lightboxImg.src = menus[currentIndex];
+  imageNumber.textContent = currentIndex + 1;
+}
+
+// 🔹 Cerrar lightbox
 function cerrarLightbox() {
   lightbox.classList.remove("show");
-
-  document.body.style.overflow = "auto"; // ✅ aquí
+  document.body.style.overflow = "auto";
 
   setTimeout(() => {
     lightbox.style.display = "none";
@@ -646,28 +786,35 @@ function cerrarLightbox() {
 // Botón X
 document.querySelector(".close").onclick = cerrarLightbox;
 
-// Click fuera
+// Click fuera de la imagen
 lightbox.addEventListener("click", (e) => {
   if (e.target === lightbox) {
     cerrarLightbox();
   }
 });
 
-
-
 // 🔹 Navegación
 function showNext() {
   currentIndex = (currentIndex + 1) % menus.length;
-  lightboxImg.src = menus[currentIndex];
+  updateImage();
 }
 
 function showPrev() {
   currentIndex = (currentIndex - 1 + menus.length) % menus.length;
-  lightboxImg.src = menus[currentIndex];
+  updateImage();
 }
 
 document.querySelector(".next").onclick = showNext;
 document.querySelector(".prev").onclick = showPrev;
+
+// 🔹 Navegación con teclado
+document.addEventListener("keydown", (e) => {
+  if (lightbox.style.display === "flex") {
+    if (e.key === "ArrowRight") showNext();
+    if (e.key === "ArrowLeft") showPrev();
+    if (e.key === "Escape") cerrarLightbox();
+  }
+});
 
 // 🔹 Swipe móvil
 let startX = 0;
@@ -686,13 +833,7 @@ lightbox.addEventListener("touchend", (e) => {
   }
 });
 
-// 🔹 Cerrar al hacer click fuera de la imagen
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) {
-    cerrarLightbox();
-  }
-});
-</script>
+  </script>
 
 </body>
 </html>
