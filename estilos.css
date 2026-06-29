@@ -11,7 +11,15 @@
     padding:0;
     box-sizing:border-box;
 }
-
+.card a{
+    display:block;
+    color:inherit;
+    text-decoration:none;
+    height:100%;
+}
+.card a:hover{
+    color:inherit;
+}
 /* MONTSERRAT */
 
 @font-face {
