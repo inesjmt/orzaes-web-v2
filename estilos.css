@@ -466,7 +466,107 @@ footer span{
     .hamburger{
         display:block;
     }
+/* =========================
+   BANNER COOKIES
+========================= */
 
+#cookie-banner{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:rgba(27,27,27,.98);
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    z-index:3000;
+    box-shadow:0 -4px 15px rgba(0,0,0,.2);
+}
+
+#cookie-banner p{
+    margin:0;
+    font-size:.9rem;
+    line-height:1.5;
+    flex:1;
+}
+
+#cookie-banner a{
+    color:var(--dorado);
+    text-decoration:none;
+    font-weight:600;
+}
+
+#cookie-banner a:hover{
+    text-decoration:underline;
+}
+
+.cookie-buttons{
+    display:flex;
+    gap:10px;
+    flex-shrink:0;
+}
+
+.btn-cookie{
+    border:none;
+    padding:10px 20px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-cookie:hover{
+    transform:translateY(-2px);
+}
+
+.btn-cookie{
+    background:var(--dorado);
+    color:white;
+}
+
+.btn-cookie:hover{
+    background:#9c7647;
+}
+
+.btn-reject{
+    background:#555;
+    color:white;
+}
+
+.btn-reject:hover{
+    background:#444;
+}
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media(max-width:768px){
+
+    #cookie-banner{
+        flex-direction:column;
+        text-align:center;
+        padding:15px;
+    }
+
+    #cookie-banner p{
+        font-size:.85rem;
+    }
+
+    .cookie-buttons{
+        width:100%;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn-cookie{
+        width:100%;
+        max-width:280px;
+    }
+}
     .menu{
         display:none;
         position:absolute;
