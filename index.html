@@ -460,6 +460,36 @@ footer span{
   color:white;
   text-decoration:underline;
 }
+.hamburger{
+    display:none;
+    background:none;
+    border:none;
+    color:white;
+    font-size:2rem;
+    cursor:pointer;
+}	
+@media(max-width:900px){
+
+    .hamburger{
+        display:block;
+    }
+
+    .menu{
+        display:none;
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background:rgba(27,27,27,.98);
+        flex-direction:column;
+        padding:20px;
+        gap:20px;
+    }
+
+    .menu.active{
+        display:flex;
+    }
+}	
 @media(max-width:900px){
 
     .hero h1{
@@ -512,6 +542,10 @@ footer span{
 <nav>
 
 <div class="logo">ORZAES</div>
+
+ <button class="hamburger" id="hamburger">
+        ☰
+ </button>
 
 <div class="menu">
 <a href="#inicio">Inicio</a>
@@ -794,7 +828,17 @@ Reserva tu mesa
  
 
   <script>
+const hamburger = document.getElementById("hamburger");
+const menu = document.getElementById("menu");
 
+hamburger.addEventListener("click", () => {
+    menu.classList.toggle("active");
+});
+document.querySelectorAll(".menu a").forEach(link => {
+    link.addEventListener("click", () => {
+        menu.classList.remove("active");
+    });
+});	  
 const menus = [
   "menus/1.png",
   "menus/2.png",
