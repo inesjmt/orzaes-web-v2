@@ -77,6 +77,10 @@
     display:block;
     color:inherit;
     text-decoration:none;
+    height:100%;
+}
+.card a:hover{
+    color:inherit;
 }
 body{
     font-family:'Montserrat',sans-serif;
