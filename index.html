@@ -37,7 +37,18 @@
 </div>
 
 </header>
+<div id="cookie-banner">
+  <p>
+    Utilizamos cookies técnicas para el correcto funcionamiento de la web.
+    <a href="politica-cookies.html">Más información</a>
+  </p>
 
+  <div class="cookie-buttons">
+    <button class="btn-cookie" onclick="aceptarCookies()">Aceptar</button>
+    <button class="btn-cookie btn-reject" onclick="rechazarCookies()">Rechazar</button>
+
+  </div>
+</div>
 <!-- HERO -->
 
 <section class="hero" id="inicio">
@@ -412,6 +423,28 @@ lightbox.addEventListener("touchend", (e) => {
   }
 });
 
+	  function aceptarCookies() {
+    localStorage.setItem("cookiesAceptadas", "true");
+    document.getElementById("cookie-banner").style.display = "none";
+}
+
+function rechazarCookies() {
+    localStorage.setItem("cookiesRechazadas", "true");
+    document.getElementById("cookie-banner").style.display = "none";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const banner = document.getElementById("cookie-banner");
+
+    if (
+        localStorage.getItem("cookiesAceptadas") ||
+        localStorage.getItem("cookiesRechazadas")
+    ) {
+        banner.style.display = "none";
+    }
+
+});
   </script>
 
 </body>
