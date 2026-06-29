@@ -257,7 +257,26 @@ function pintar(lista, id, precio = false) {
 pintar(TAPAS, 'tapas-list');
 pintar(RACIONES, 'raciones-list', true);
 pintar(POSTRES, 'postres-list', true);
+document.addEventListener("DOMContentLoaded", () => {
 
+    const params = new URLSearchParams(window.location.search);
+    const seccion = params.get("seccion");
+
+    if (!seccion) return;
+
+    const botones = document.querySelectorAll(".tab-btn");
+
+    botones.forEach(btn => {
+
+        const texto = btn.textContent.toLowerCase();
+
+        if (texto === seccion) {
+            showSection(seccion, btn);
+        }
+
+    });
+
+});
 </script>
 
 </body>
